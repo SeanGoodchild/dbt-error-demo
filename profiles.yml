@@ -1,0 +1,15 @@
+analytics:
+  target: bigquery-dev
+
+  outputs:
+    bigquery-dev:
+      type: bigquery
+      method: service-account
+      project: alli-data-rocketmill
+      dataset: dbt_{{ env_var('DBT_USER') }}
+      threads: 4
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"
+      location: EU
+      priority: interactive
+      job_execution_timeout_seconds: 1200
+      job_retries: 5

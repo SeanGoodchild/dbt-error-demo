@@ -1,0 +1,18 @@
+name: demo
+profile: analytics
+# File paths
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]  # dbt clean will remove these folders
+
+# ───────────────────────────────────────
+# Model configurations
+# ───────────────────────────────────────
+models:
+  demo:
+    1_inputs:
+      +materialized: view  # Build models as tables by default
+    2_outputs:
+      +materialized: table  # Build models as views by default
